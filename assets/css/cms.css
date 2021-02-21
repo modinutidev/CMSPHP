@@ -1,0 +1,14 @@
+header {
+    height: 50px;
+    background-color: #2185d0;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+tr {
+    cursor: pointer;
+}
