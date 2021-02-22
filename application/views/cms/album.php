@@ -55,7 +55,7 @@
         <div class="sixteen wide column">
         
         
-            <table class="ui celled padded table selectable">
+            <table class="ui celled padded table">
                 <thead>
                     <tr>
                         <th class="single line center aligned">#</th>
