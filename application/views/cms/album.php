@@ -66,19 +66,24 @@
                         <th class="single line center aligned">Posição</th>
                         <th class="single line center aligned">Destaque</th>
                         <th class="single line center aligned">Ativo</th>
+                        <th class="single line center aligned">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($imagens as $imagem) { ?>
                     <tr>
                         <td class="single line center aligned"><b><?= $imagem['id_imagem'] ?></b></td>
-                        <td><img src="<?= base_url('/uploads/albuns/'.$imagem['arquivo_nome'])?>" alt="" style="width: 100px;"></td>
+                        <td><img src="<?= base_url('/uploads/albuns/'.$imagem['arquivo_nome'])?>" alt="<?= $imagem['titulo'] ?>" style="width: 100px;"></td>
                         <td><?= $imagem['titulo'] ?></td>
                         <td><?= $imagem['descricao'] ?></td>
                         <td><?= $imagem['tags'] ?></td>
                         <td class="single line center aligned"><?= $imagem['posicao'] ?></td>
                         <td class="single line center aligned"><?= $imagem['destaque'] == '1' ? 'Sim' : 'Não' ?></td>
                         <td class="single line center aligned"><?= $imagem['ativo'] == '1' ? 'Sim' : 'Não' ?></td>
+                        <td class="single line center aligned">
+                            <button class="ui button primary"><i class="pencil alternate icon"></i></button>
+                            <button class="ui button red"><i class="trash icon"></i></button>
+                        </td>
                     </tr>
                     <?php } ?>
 
@@ -348,7 +353,15 @@ $(document).on('click', '#insert-new-image', function(event) {
                     $('<td>').text(registro[0]['tags']),
                     $('<td>').addClass('single line center aligned').text(registro[0]['posicao']),
                     $('<td>').addClass('single line center aligned').text(registro[0]['destaque'] == 0 ? 'Não' : 'Sim'),
-                    $('<td>').addClass('single line center aligned').text(registro[0]['ativo'] == 0 ? 'Não' : 'Sim')
+                    $('<td>').addClass('single line center aligned').text(registro[0]['ativo'] == 0 ? 'Não' : 'Sim'),
+                    $('<td>').addClass('single line center aligned').prepend(
+                        $('<button>').addClass('ui button primary').prepend(
+                            $('<i>').addClass('pencil alternate icon'),
+                        ),
+                        $('<button>').addClass('ui button red').prepend(
+                            $('<i>').addClass('trash icon'),
+                        )
+                    )
                 ).appendTo('tbody')
 
                 // print new register
